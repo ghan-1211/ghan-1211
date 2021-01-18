@@ -1,4 +1,4 @@
-package cn.edu.hcnu.MD5;
+package cn.edu.hcnu.Client;
 
 import sun.misc.BASE64Encoder;
 
@@ -7,38 +7,31 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class MD5 {
-    /**ÀûÓÃMD5½øĞĞ¼ÓÃÜ
-     * @param str  ´ı¼ÓÃÜµÄ×Ö·û´®
-     * @return  ¼ÓÃÜºóµÄ×Ö·û´®
-     * @throws NoSuchAlgorithmException  Ã»ÓĞÕâÖÖ²úÉúÏûÏ¢ÕªÒªµÄËã·¨
+    /**åˆ©ç”¨MD5è¿›è¡ŒåŠ å¯†
+     * @param str  å¾…åŠ å¯†çš„å­—ç¬¦ä¸²
+     * @return  åŠ å¯†åçš„å­—ç¬¦ä¸²
+     * @throws NoSuchAlgorithmException  æ²¡æœ‰è¿™ç§äº§ç”Ÿæ¶ˆæ¯æ‘˜è¦çš„ç®—æ³•
      * @throws UnsupportedEncodingException
      */
     public static String encoderByMd5(String str) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-        //È·¶¨¼ÆËã·½·¨
+        //ç¡®å®šè®¡ç®—æ–¹æ³•
         MessageDigest md5= MessageDigest.getInstance("MD5");
         BASE64Encoder base64en = new BASE64Encoder();
-        //¼ÓÃÜºóµÄ×Ö·û´®
+        //åŠ å¯†åçš„å­—ç¬¦ä¸²
         String newstr=base64en.encode(md5.digest(str.getBytes("utf-8")));
         return newstr;
     }
-
-    /**ÅĞ¶ÏÓÃ»§ÃÜÂëÊÇ·ñÕıÈ·
-     * @param newpasswd  ÓÃ»§ÊäÈëµÄÃÜÂë
-     * @param oldpasswd  Êı¾İ¿âÖĞ´æ´¢µÄÃÜÂë£­£­ÓÃ»§ÃÜÂëµÄÕªÒª
+    /**åˆ¤æ–­ç”¨æˆ·å¯†ç æ˜¯å¦æ­£ç¡®
+     * @param newpasswd  ç”¨æˆ·è¾“å…¥çš„å¯†ç 
+     * @param oldpasswd  æ•°æ®åº“ä¸­å­˜å‚¨çš„å¯†ç ï¼ï¼ç”¨æˆ·å¯†ç çš„æ‘˜è¦
      * @return
      * @throws NoSuchAlgorithmException
      * @throws UnsupportedEncodingException
      */
-
-
     public static boolean checkpassword(String newpasswd,String oldpasswd) throws NoSuchAlgorithmException, UnsupportedEncodingException{
         if(encoderByMd5(newpasswd).equals(oldpasswd))
             return true;
         else
             return false;
-    }
-
-    public static void main(String[] args) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-        System.out.println(encoderByMd5("ZQL817"));//W94PwegY4G09U6b4/0R2Bg==
     }
 }

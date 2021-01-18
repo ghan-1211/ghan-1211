@@ -1,11 +1,15 @@
-public class test1 {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Test1 {
     public static void main(String[] args) {
-        computer com = new computer();
-        int m = 100;
-        int n = 200;
-        int result = com.add(m,n);  //灏唌,n鐨勫�间紶鍊肩粰鍙傛暟x锛寉
-        System.out.println(result);
-        result = com.add(120+m,n*10+8); //灏嗚〃杈惧紡浼犵粰鍙傛暟x锛寉
-        System.out.println(result);
+        List list = new ArrayList();
+        list.add(1);
+        list.add("河池学院");
+        list.add(2);
+
+        for (Object li : list){   //
+            System.out.println("当前集合的输出值为：" + li);
+        }
     }
 }
